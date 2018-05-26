@@ -1,0 +1,6 @@
+Tor - Browser 52.8.0 [TOR]: Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0
+Mac - Safari 11.0.2 [Desktop]: Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_2) AppleWebKit/603.1.13 (KHTML, like Gecko) Version/11.0.2 Safari/603.1.13
+Win - Chrome 63 [Desktop]: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36
+Win - Firefox 58 [Desktop]: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:58.0) Gecko/20100101 Firefox/58.0
+Win - IE 11 [Desktop]: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Win - Edge 16 [Desktop]: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/16.16299.15.0
