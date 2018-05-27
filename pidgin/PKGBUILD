@@ -1,0 +1,80 @@
+# Maintainer: Unknown542a, minimalistic compilation
+
+pkgname=('pidgin' 'libpurple' 'finch')
+pkgver=2.13.0
+pkgrel=2
+arch=('x86_64')
+url="http://pidgin.im/"
+license=('GPL')
+makedepends=('startup-notification' 'libsasl' 'hicolor-icon-theme' 'ca-certificates')
+source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc})
+md5sums=('423403494fe1951e47cc75231f743bb0'
+         'SKIP')
+validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032') # Gary Kramlich (grim) <grim@reaperworld.com>
+
+prepare() {
+  cd $pkgbase-$pkgver
+  # https://developer.pidgin.im/ticket/17065
+  #patch -Np1 -i ../purple-remote-python3.patch
+  echo skip
+}
+
+build() {
+  cd $pkgbase-$pkgver
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --disable-gnutls \
+    --enable-cyrus-sasl \
+    --disable-nls \
+    --disable-gtkspell \
+    --disable-gestures \
+    --disable-schemas-install \
+    --disable-gstreamer \
+    --disable-gstreamer-interfaces \
+    --disable-farstream \
+    --disable-vv \
+    --disable-meanwhile \
+    --disable-avahi \
+    --disable-perl \
+    --disable-tcl \
+    --disable-tk \
+    --disable-doxygen \
+    --disable-dbus \
+    --disable-missing-dependencies \
+    --with-system-ssl-certs=/etc/ssl/certs \
+    --with-static-prpls='' \
+    --with-dynamic-prpls="irc jabber"
+
+    make 
+}
+
+package_pidgin(){
+  cd $pkgbase-$pkgver
+  make -C libpurple DESTDIR="$pkgdir" install
+  make -C pidgin DESTDIR="$pkgdir" install
+  make -C doc DESTDIR="$pkgdir" install
+  make -C libpurple DESTDIR="$pkgdir" uninstall
+  rm "$pkgdir/usr/share/man/man1/finch.1"
+}
+
+package_libpurple(){
+  cd $pkgbase-$pkgver
+  for _dir in libpurple share/sounds share/ca-certs m4macros; do
+    make -C "$_dir" DESTDIR="$pkgdir" install
+  done
+}
+
+package_finch(){
+  pkgdesc="A ncurses-based messaging client"
+  cd $pkgbase-$pkgver
+  # For linking
+  make -C libpurple DESTDIR="$pkgdir" install
+  make -C finch DESTDIR="$pkgdir" install
+  make -C doc DESTDIR="$pkgdir" install
+  make -C libpurple DESTDIR="$pkgdir" uninstall
+  rm "$pkgdir"/usr/share/man/man1/pidgin.1
+}
+
+# vim:set ts=2 sw=2 et:
