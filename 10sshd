@@ -1,0 +1,8 @@
+#!/system/bin/sh
+#
+# Print startup info
+#
+L="log -p i -t x1125io.initdlight"
+CMD="/system/bin/sshd -4 -p 8022"
+$L "*** Starting sshd: $CMD"
+$CMD
