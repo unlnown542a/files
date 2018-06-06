@@ -1,0 +1,17 @@
+#!/system/bin/sh
+L="log -p i -t x1125io.initdlight"
+CMD="/system/xbin/privoxy /sdcard/Backups/privoxy/privoxy.conf"
+HTTP_PROXY="127.0.0.1:8228"
+EXCLUSION_LIST="127.0.0.1,localhost"
+settings put global http_proxy $HTTP_PROXY
+settings put global http_proxy_exclusion_list $EXCLUSION_LIST
+settings put global global_http_proxy_exclusion_list $EXCLUSION_LIST
+$L "*** Have set up global proxy variables:"
+settings list global | grep proxy | while read line ; do $L $line ; done
+if ! ps|grep /system/xbin/privoxy|grep -v grep
+then
+  $L "*** Starting privoxy: $CMD"
+  exec $CMD
+else
+  $L "*** Privoxy is already runing"
+fi
