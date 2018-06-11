@@ -63,8 +63,7 @@ $IPTABLES $IPTABLES_OPTS -A XX_INPUT  -i rmnet_data0 -p tcp --syn -m tcp --dport
 $IPTABLES $IPTABLES_OPTS -A XX_INPUT  -i rmnet_data0 -p tcp --syn -m tcp --dport 8228 -j DROP
 $IPTABLES $IPTABLES_OPTS -A XX_INPUT  -i rmnet_data0 -p tcp --syn -m tcp --dport 8022 -j DROP
 # PERMIT new DHCP
-$IPTABLES $IPTABLES_OPTS -A XX_INPUT  -p udp -m udp --sport 67 --dport 68 -j ACCEPT
-$IPTABLES $IPTABLES_OPTS -A XX_OUTPUT -p udp -m udp --sport 68 --dport 67 -j ACCEPT
+$IPTABLES $IPTABLES_OPTS -A XX_OUTPUT -p udp -m udp --dport 67 -j ACCEPT
 # FIXME: i2pd, tor, privoxy, sshd - all root procs can send out. Not yet found the way to su to given user
 $IPTABLES $IPTABLES_OPTS -A XX_OUTPUT -m owner --uid-owner $ROOT    -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
 # SNTP sync
@@ -79,7 +78,6 @@ $IPTABLES $IPTABLES_OPTS -A XX_tether_FORWARD -o wlan0 -j ACCEPT
 # REDIRECT all DNS to TOR
 $IPTABLES $IPTABLES_OPTS -t nat -A XX_nat_OUTPUT -p udp --dport 53 -j REDIRECT --to-ports 5400
 # CLAMP MSS to PMTU
-$IPTABLES $IPTABLES_OPTS -t mangle -A XX_mangle_FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 $IPTABLES $IPTABLES_OPTS -t mangle -A XX_mangle_FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 
 ## OrWall Init stub
