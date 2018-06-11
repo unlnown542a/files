@@ -1,2 +1,2 @@
 If this file exists, it flags to i2pd startup shell to not start i2pd
-If you want to start it, rename this file like disable_ and restart orbot
+If you want to start it, rename this file like enabled-- and restart orbot
