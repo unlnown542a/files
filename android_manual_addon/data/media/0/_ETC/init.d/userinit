@@ -1,0 +1,35 @@
+#!/system/bin/sh
+ETC="/sdcard/_ETC"
+log_f () {
+  log -p i -t x1125io.initdlight "$@"
+  echo x1125io.initdlight "$@"
+}
+run_f () {
+  RUN="$@"; EXE=$(echo $RUN|cut -d' ' -f1)
+  if ps|grep $EXE|grep -v grep > /dev/null;  then
+    log_f "$EXE IS ALREADY RUNNING";
+  else
+    log_f "STARTING $RUN"; $RUN;
+  fi
+}
+# NOW RUN SERVICES
+run_f "/system/xbin/tor -f $ETC/tor/torrc"
+run_f "/system/xbin/privoxy $ETC/privoxy.conf"
+run_f "/system/bin/sshd -4 -p 8022"
+if [ -f "$ETC/i2pd/enabled" ]; then
+  mkdir -p "/data/i2pd"
+  run_f "/system/xbin/i2pd --service --daemon \
+          --datadir=/data/i2pd \
+             --conf=$ETC/i2pd/i2pd.conf \
+          --tunconf=$ETC/i2pd/tunnels.conf \
+          --pidfile=$ETC/i2pd/i2pd.pid"
+else
+  log_f "I2PD IS DISABLED"
+fi;
+settings put global http_proxy 127.0.0.1:8228
+settings put global http_proxy_exclusion_list 127.0.0.1,localhost
+log_f "DONE SETTING GLOBAL HTTP PROXY"
+
+exit 0
+
+
