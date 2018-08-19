@@ -1,0 +1,4 @@
+#!/system/bin/sh -ex
+logger -t initdlight "Starting $0"
+sysctl -p /data/etc/sysctl.conf
+logger -t initdlight "Started $0"

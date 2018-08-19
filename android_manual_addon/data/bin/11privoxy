@@ -1,0 +1,4 @@
+#!/system/bin/sh -ex
+logger -t initdlight "Starting $0"
+/system/xbin/privoxy /data/etc/privoxy.conf
+logger -t initdlight "Started $0"

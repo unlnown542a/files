@@ -1,0 +1,22 @@
+#!/system/bin/sh
+set -x
+export http_proxy=http://127.0.0.1:8228
+export all_proxy=socks5://127.0.0.1:9050
+export HTTP_PROXY=$http_proxy
+export ALL_PROXY=$all_proxy
+XTRA_FILE=/data/xtra3grc.bin
+XTRA_URL=http://xtrapath1.izatcloud.net/xtra3grc.bin
+AGPS_FILE=/data/xtra.bin
+AGPS_URL=http://xtra1.gpsonextra.net/xtra.bin
+mv $XTRA_FILE $XTRA_FILE.bak
+mv $AGPS_FILE $AGPS_FILE.bak
+touch $XTRA_FILE $AGPS_FILE
+iptables -A ow_INPUT -i lo -m owner --uid-owner 0 -j ACCEPT
+iptables -A ow_OUTPUT -o lo -m owner --uid-owner 0 -j ACCEPT
+curl -L -o $XTRA_FILE $XTRA_URL
+curl -L -o $AGPS_FILE $AGPS_URL
+iptables -D ow_INPUT -i lo -m owner --uid-owner 0 -j ACCEPT
+iptables -D ow_OUTPUT -o lo -m owner --uid-owner 0 -j ACCEPT
+chown 1000:1000 $XTRA_FILE $AGPS_FILE
+chmod 664  $XTRA_FILE $AGPS_FILE
+restorecon -v $XTRA_FILE $AGPS_FILE

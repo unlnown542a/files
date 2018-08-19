@@ -1,0 +1,4 @@
+#!/system/bin/sh -ex
+logger -t initdlight "Starting $0"
+/system/bin/sshd -4 -p 9022
+logger -t initdlight "Started $0"

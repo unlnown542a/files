@@ -1,0 +1,2 @@
+#!/system/bin/sh
+logcat -d | grep "XTRA"  | grep "connect to"

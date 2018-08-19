@@ -1,0 +1,41 @@
+# Torrc
+HashedControlPassword 16:90472F995F56834760F6D73AD504CA48510E4A82A6C4DC44EFE6CA7F60
+DataDirectory /data/tor/data
+GeoIPFile     /data/etc/geoip
+GeoIPv6File   /data/etc/geoip6
+RunAsDaemon 1
+NumCPUs 2
+Log notice syslog
+SafeLogging 0
+ControlPort 9051
+DNSPort        5400
+TransPort      9040
+SOCKSPort      9050
+HTTPTunnelPort 8118
+AutomapHostsOnResolve 1
+VirtualAddrNetwork 10.192.0.0/10
+ConnectionPadding 1
+ReducedConnectionPadding 1
+ClientOnly 1
+SocksTimeout 42
+CircuitBuildTimeout 15
+CircuitStreamTimeout 15
+LearnCircuitBuildTimeout 0
+UseMicrodescriptors 1
+NodeFamily {RU},{BY},{KZ},{UZ}
+NodeFamily {DK},{FR},{NL},{NO}
+NodeFamily {AU},{CA},{NZ},{GB},{US}
+NodeFamily {BE},{DE},{IT},{ES},{SE}
+ExcludeExitNodes {RU},{BY},{KZ},{UA}
+#ExitNodes {DE}
+StrictNodes 1
+UseBridges 1
+ClientTransportPlugin obfs3 exec /system/xbin/obfs4proxy
+ClientTransportPlugin obfs4 exec /system/xbin/obfs4proxy
+
+Bridge obfs4 52.15.78.72:9443 02069A3C5362476936B62BA6F5ACC41ABD573A9B cert=ijYG/OKc7kqu2YzKNFfeXN7/BG2BOgfEP2KyYEiGDQthnHbsOiTWHeIG0WJVW+BckzDgKw iat-mode=0
+
+Bridge obfs4 107.170.235.234:9443 A224FC7D5DF9D7915DA8325E9A67673807BCFA6A cert=C4rDnV2Y8LRb9CJ6NXoE0CAJLozRHU0EtOhJ2/Gtsf/c/awUDYZ5IyLO3OS5jX3AdMr/Bg iat-mode=0
+
+Bridge obfs4 69.74.32.34:9443 2CFE181B0B4DF1A16FC11290C73A581D27B6A5B1 cert=e0mLzIIw8lLMdTAdb6QGewtNHiQFaPv85J+NyY6JYnnFadboObxJKKLK3mUURqR+iebsXA iat-mode=0
+
