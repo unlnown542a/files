@@ -1,5 +1,7 @@
 # files
 
+* Recommended https://f-droid.org/en/packages/com.sovworks.edslite/
+
 * Added fresh (2018-08-19) gsmlocation/lacells.db.bz2 for https://f-droid.org/en/packages/org.fitchfamily.android.gsmlocation/
 
 * user.js - firefox quantum hardering. Thanks to https://github.com/pyllyukko/user.js !
