@@ -89,7 +89,6 @@ $IPTABLES $IPTABLES_OPTS -A XX_OUTPUT -m owner --uid-owner $WIREGUARD -m conntra
 # SIP: linphone
 $IPTABLES $IPTABLES_OPTS -A XX_OUTPUT -d 127.0.0.1/32 -m owner --uid-owner $LINPHONE -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
 $IPTABLES $IPTABLES_OPTS -A XX_OUTPUT -p udp          -m owner --uid-owner $LINPHONE -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
-#$IPTABLES $IPTABLES_OPTS -t nat -A XX_OUTPUT -p tcp   -m owner --uid-owner $LINPHONE -j REDIRECT --to-ports 9040
 $IPTABLES $IPTABLES_OPTS -t nat  -A XX_OUTPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m owner --uid-owner $LINPHONE -m comment --comment "Force Linphone through TransPort" -j REDIRECT --to-ports 9040
 
 # DHCP
