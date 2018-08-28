@@ -1,6 +1,8 @@
 #!/system/bin/sh -ex
-logger -t initdlight "Starting $0"
+logger -t userinit "Starting $0"
+settings put global captive_portal_detection_enabled 0
+settings put global captive_portal_mode 0
 settings put global http_proxy "127.0.0.1:8228"
 settings put global http_proxy_exclusion_list "127.0.0.1,localhost"
 settings put global global_http_proxy_exclusion_list "127.0.0.1,localhost"
-logger -t initdlight "Started $0"
+logger -t userinit "Started $0"

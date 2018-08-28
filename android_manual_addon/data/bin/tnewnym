@@ -1,2 +1,2 @@
-(echo authenticate '"passtor"'; echo signal newnym; echo quit) | nc 127.0.0.1 9051
+(echo authenticate '"funky13"'; echo signal newnym; echo quit) | nc 127.0.0.1 9051
 logcat -C

@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-(echo authenticate '"passtor"'; echo setconf DisableNetwork=1; echo quit) | nc 127.0.0.1 9051
+(echo authenticate '"funky13"'; echo setconf DisableNetwork=1; echo quit) | nc 127.0.0.1 9051
 sleep 1
-(echo authenticate '"passtor"'; echo setconf DisableNetwork=0; echo quit) | nc 127.0.0.1 9051
+(echo authenticate '"funky13"'; echo setconf DisableNetwork=0; echo quit) | nc 127.0.0.1 9051
 logcat -C
