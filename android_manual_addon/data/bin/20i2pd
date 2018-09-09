@@ -1,9 +1,0 @@
-#!/system/bin/sh -ex
-logger -t userinit "Starting $0"
-/system/xbin/i2pd --service --daemon \
-  --datadir=/data/i2pd \
-     --conf=/data/etc/i2pd/i2pd.conf \
-  --tunconf=/data/etc/i2pd/tunnels.conf \
-  --pidfile=/data/etc/i2pd/i2pd.pid
-
-logger -t userinit "Started $0"

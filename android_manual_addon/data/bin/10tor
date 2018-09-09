@@ -1,4 +1,0 @@
-#!/system/bin/sh -ex
-logger -t userinit "Starting $0"
-/system/xbin/tor -f /data/etc/torrc
-logger -t userinit "Started $0"
