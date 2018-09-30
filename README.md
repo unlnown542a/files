@@ -1,6 +1,17 @@
 # files
 
-* NEW! Flashable zips:
+* firefox-quantum-tor-browser-how-to (works for Linux and Android, i think Windows too)
+  * user.js - firefox quantum hardering. Thanks to https://github.com/pyllyukko/user.js !
+  * ua-for-ua-switcher.txt - data for Firefox plugin - https://gitlab.com/ntninja/user-agent-switcher
+  * Requied addons:
+    * CanvasBlocker -> block everything
+    * noScript
+    * https-everywhere
+    * user-agent-switcher
+    * (nice to have) lumerias-clear-storage
+  * go and check your ident bits at https://panopticlick.eff.org/
+
+* Flashable zips:
 
   * this does not need to be modified:
     * system-oem-iptables-network-location-gps.zip
@@ -16,10 +27,8 @@
 
 * Crypto containers opensource https://f-droid.org/en/packages/com.sovworks.edslite/
 
-* Added fresh (2018-09-08) lacells.db.bz2 for https://f-droid.org/en/packages/org.fitchfamily.android.gsmlocation/
+* lacells.db.bz2 for https://f-droid.org/en/packages/org.fitchfamily.android.gsmlocation/
 
-* user.js - firefox quantum hardering. Thanks to https://github.com/pyllyukko/user.js !
-  * ua-for-ua-switcher.txt - data for Firefox plugin - https://gitlab.com/ntninja/user-agent-switcher
 
 * build:
   * libpurple-lurch-git - Arch PKGBUILD for libpurple-lurch-git, omemo in pidgin
