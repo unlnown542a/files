@@ -199,8 +199,13 @@ user_pref("network.protocol-handler.external.javascript",false);
 user_pref("network.protocol-handler.external.moz-extension",false);
 user_pref("network.protocol-handler.warn-external-default",true);
 user_pref("network.proxy.socks_remote_dns",true);
+/* user_pref("network.proxy.type",1);
+user_pref("network.proxy.socks", "127.0.0.1");
+user_pref("network.proxy.socks_port", 9050);
+user_pref("network.proxy.no_proxies_on","localhost,127.0.0.1");
+*/
 user_pref("network.proxy.type",2);
-user_pref("network.proxy.autoconfig_url","file:///sdcard/.pac.txt");
+user_pref("network.proxy.autoconfig_url","file:///home/user/proxy.pac");
 user_pref("network.proxy.autoconfig_retry_interval_max", 3);
 user_pref("network.proxy.autoconfig_retry_interval_min", 1);
 user_pref("network.stricttransportsecurity.preloadlist",true);
